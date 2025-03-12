@@ -1,0 +1,2 @@
+Pillow (pip install Pillow)
+pillow_heif (pip install pillow pillow-heif)
