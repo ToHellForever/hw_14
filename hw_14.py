@@ -3,7 +3,7 @@ hw_14: В данном задании вы проведете рефактори
 """
 
 import os
-from typing import Union
+from typing import *
 from PIL import Image
 from pillow_heif import register_heif_opener
 
@@ -12,7 +12,7 @@ class ImageCompressor:
     """
     Класс для сжатия изображений в формат HEIF.
     """
-    supported_formats = ('.jpg', '.jpeg', '.png', '.jfif')
+    supported_formats: Tuple[str, ...] = ('.jpg', '.jpeg', '.png', '.jfif')
     
     def __init__(self, quality: int = 60) -> None:
         """
@@ -64,7 +64,7 @@ class ImageCompressor:
             print(f"Ошибка при сжатии {input_path}: {e}")
     
     
-    def process_directory(self,directory: str) -> None:
+    def process_directory(self,directory: str) -> NoReturn:
         """
         Рекурсивно обрабатывает все изображения в директории и её поддиректориях.
 
@@ -80,7 +80,7 @@ class ImageCompressor:
                     self.compress_image(input_path, output_path)
                 
                 
-    def main(input_path: str) -> None:
+    def main(input_path: str) -> NoReturn:
         """
         Основная функция для обработки пользовательского ввода и запуска сжатия изображений.
 
