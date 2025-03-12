@@ -64,3 +64,20 @@ class ImageCompressor:
             print(f"Ошибка при сжатии {input_path}: {e}")
     
     
+    def process_directory(self,directory: str) -> None:
+        """
+        Рекурсивно обрабатывает все изображения в директории и её поддиректориях.
+
+        Args:
+            directory (str): Путь к директории для обработки.
+        """
+        for root, _, files in os.walk(directory):
+            for file in files:
+            # Проверяем расширение файла
+                if file.lower().endswith(self.supported_formats ):
+                    input_path = os.path.join(root, file)
+                    output_path = os.path.splitext(input_path)[0] + '.heic'
+                    self.compress_image(input_path, output_path)
+                
+                
+    
